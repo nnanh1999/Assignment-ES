@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "title": "post one",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644560897/iqcpjifrpbtvwmk4nrt1.jpg",
+      "desc": "Mai trượt",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "title": "Gì đây",
+      "createdAt": "123",
+      "desc": "alo"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "email": "anh@ga.com",
+      "password": "$2a$10$NIvTX2G8NL3SUaQUpwNgrebwpb1Phd8X2QZP7Xidrrvw/paGsB5SG",
+      "username": "ngnhatnh",
+      "id": 1
+    },
+    {
+      "email": "anh@gmail.com",
+      "password": "$2a$10$eAHMGNjQ7OAKIoU02IRmse3cc2DKrfQ4GkkchjkRhDpXsxHsFgHGu",
+      "username": "anh",
+      "id": 2
+    },
+    {
+      "email": "anhdep@gmail.com",
+      "password": "$2a$10$qQHgQP0PmT4Nsiab9AYTa.2veyLLl6ZMsazhvfuwuRx/J/qkoEgnC",
+      "username": "anhdep",
+      "id": 3
+    }
+  ]
+}
