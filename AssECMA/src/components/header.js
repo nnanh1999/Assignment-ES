@@ -1,3 +1,5 @@
+import reRender from "../../ultis/reRender";
+
 const Header = {
     render(){
         return /* html */`
@@ -13,7 +15,8 @@ const Header = {
             </div>
             <div id="" class="text-right bg-blue-700">
                 <span id="account" class="p-5 text-white"></span>
-                <button id="logout" class="px-5 text-white">Log out</button>
+                
+                ${(localStorage.getItem('user')) ? '<button id="logout" class="px-5 text-white">Log out</button>' : '<a id="login" href="/signin" class="px-5 text-white">Log in</a>'}
             </div>
             <nav id="nav" class="bg-orange-400">
             <ul
@@ -38,7 +41,7 @@ const Header = {
                 >
                 </li>
                 <li>
-                <a href="/add" class="hover:border-b border-white">Chi tiết sản phẩm</a>
+                <a href="/admin/news" class="hover:border-b border-white">Admin</a>
                 </li>
                 <form action="" class="relative left-4">
                 <input
@@ -60,9 +63,11 @@ const Header = {
         const account = document.querySelector("#account");
         const btnLogout = document.querySelector("#logout")
         account.innerHTML = JSON.parse(localStorage.getItem('user')).email;
-
+        
         btnLogout.addEventListener('click' , () => {
             localStorage.removeItem('user');
+            reRender(Header, "#header");
+            
         })
        
     }

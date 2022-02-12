@@ -6,7 +6,7 @@ const DetailNewsPage = {
     const {data} = await get(id);
     return /* html */ `
     <div class="container max-w-5xl mx-auto max-h-full">  
-        ${Header.render()} 
+        ${ Header.render()} 
         <div class="news_title pt-5">
             <h1 class="text-2xl text-bold font-semibold italic md:not-italic text-black"> ${data.title} </h1>
         </div>
@@ -30,5 +30,8 @@ const DetailNewsPage = {
     
     `;
   },
+  afterRender(){
+    Header.afterRender();
+  }
 };
 export default DetailNewsPage;
