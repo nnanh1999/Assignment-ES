@@ -5,7 +5,9 @@ const HomePage = {
     async render() {
         return /* html */ `
         <div class="container max-w-5xl mx-auto max-h-full">  
-            ${Header.render()}  
+            <div id="header">
+                ${Header.render()}
+            </div>  
             <div class="banner my-2">
                 <a href=""><img src="https://caodang.fpt.edu.vn/wp-content/uploads/Banner-PC-1.png" class="" alt="abc"></a>
             </div>
@@ -20,6 +22,8 @@ const HomePage = {
     },
     afterRender(){
         Header.afterRender();
+        // eslint-disable-next-line no-unused-vars
+        const header = document.querySelector("#header")
     }
 };
 export default HomePage;

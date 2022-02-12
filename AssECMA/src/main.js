@@ -17,6 +17,26 @@ const print = async (content,id) => {
     document.getElementById("app").innerHTML = await content.render(id);
     if(content.afterRender) content.afterRender(id);
 };
+
+router.on("/admin/*" , () => {}, {
+    before(done){
+        // do something
+        if(localStorage.getItem('user')){
+            const userId = JSON.parse(localStorage.getItem('user')).id;
+            // console.log(userId);
+            if(userId === 1){
+                done();
+            }else{
+                document.location.href = "/";
+            }
+        }else{
+            document.location.href = "/";
+        }
+        done();
+    }
+}
+);
+
 router.on({
     "/": () => {
         print(HomePage);

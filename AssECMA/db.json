@@ -7,10 +7,10 @@
       "id": 2
     },
     {
-      "id": 3,
-      "title": "Gì đây",
-      "createdAt": "123",
-      "desc": "alo"
+      "title": "abc",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644643331/ilunxszufla4yvr1rnrk.jpg",
+      "desc": "a",
+      "id": 4
     }
   ],
   "comments": [],
@@ -19,22 +19,16 @@
   },
   "users": [
     {
-      "email": "anh@ga.com",
-      "password": "$2a$10$NIvTX2G8NL3SUaQUpwNgrebwpb1Phd8X2QZP7Xidrrvw/paGsB5SG",
-      "username": "ngnhatnh",
-      "id": 1
-    },
-    {
-      "email": "anh@gmail.com",
-      "password": "$2a$10$eAHMGNjQ7OAKIoU02IRmse3cc2DKrfQ4GkkchjkRhDpXsxHsFgHGu",
-      "username": "anh",
-      "id": 2
-    },
-    {
       "email": "anhdep@gmail.com",
       "password": "$2a$10$qQHgQP0PmT4Nsiab9AYTa.2veyLLl6ZMsazhvfuwuRx/J/qkoEgnC",
       "username": "anhdep",
-      "id": 3
+      "id": 1
+    },
+    {
+      "email": "anh@ga.com",
+      "password": "$2a$10$sf.SQ9TL3J6CQP73SlpLc.YQjWFIa83cJjanBAH4JOnOYmxtFDAM2",
+      "username": "luv",
+      "id": 2
     }
   ]
 }

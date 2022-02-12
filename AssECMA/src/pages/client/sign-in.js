@@ -72,12 +72,24 @@ const SignInPage = {
         const formSignin = document.querySelector("#formSignin");
         formSignin.addEventListener( 'submit' , async (e)=>{
             e.preventDefault();
-                const res =  await signin({
-                    "email" : document.querySelector("#email").value,
-                    "password" : document.querySelector("#password").value
-                });
-
-                localStorage.setItem('user',JSON.stringify(res.data.user));
+                try {
+                    const res =  await signin({
+                        "email" : document.querySelector("#email").value,
+                        "password" : document.querySelector("#password").value
+                    });
+    
+                    localStorage.setItem('user',JSON.stringify(res.data.user));
+                    if(res.data.user.id === 1){
+                        document.location.href = "/admin/news";
+                    }else{
+                        document.location.href = "/";
+                    }
+    
+                } 
+                catch (error) {
+                    document.location.href = "/";
+                }
+                
         });
     }
 }

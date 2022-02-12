@@ -1,4 +1,5 @@
 import { remove } from '../../../../api/posts';
+import reRender from '../../../../ultis/reRender';
 import navAdmin from '../../../components/navAdmin';
 
 const NewsPage = {
@@ -68,14 +69,14 @@ const NewsPage = {
     },
     afterRender(){
         const btns =document.querySelectorAll(".btn");
-    
         btns.forEach((buttonElement) => {
             const {id} = buttonElement.dataset;
             buttonElement.addEventListener('click', ()=>{
                 const confirm = window.confirm("Bạn chắc chắn xóa?")
                 if(confirm) remove(id).then(()=>{
-                    // sau đó...
+                    reRender(NewsPage,"#app");
                 });
+                
             })
         });
     } 
