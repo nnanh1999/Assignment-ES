@@ -11,6 +11,8 @@ import DashBoardPage from "./pages/admin/dashboard";
 import NewsPage from "./pages/admin/news/list";
 import AddNewPage from "./pages/admin/news/add";
 import EditNewsPage from "./pages/admin/news/edit";
+import Products from "./pages/client/products/list";
+import Categories from "./pages/client/categories/list";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content,id) => {
@@ -46,6 +48,12 @@ router.on({
        print(DetailNewsPage,value.data.id);
     },
 
+    "/products" : ()=>{
+        print(Products);
+    },
+    "/categories" : ()=>{
+        print(Categories);
+    },
     // login
     
     "/signup": ()=> {
@@ -70,6 +78,7 @@ router.on({
         print(EditNewsPage,value.data.id);
 
     }
+    
     
 });
 router.notFound(() => print("Not Found Page"));

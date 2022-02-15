@@ -3,6 +3,7 @@ import Header from "../../components/header";
 
 const HomePage = {
     async render() {
+        
         return /* html */ `
         <div class="container max-w-5xl mx-auto max-h-full">  
             <div id="header">
@@ -24,6 +25,7 @@ const HomePage = {
         Header.afterRender();
         // eslint-disable-next-line no-unused-vars
         const header = document.querySelector("#header")
+        
     }
 };
 export default HomePage;

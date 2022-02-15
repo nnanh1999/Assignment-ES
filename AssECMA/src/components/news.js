@@ -3,6 +3,8 @@ import { getAll } from '../../api/posts';
 const News = {
   async  render() { 
     const {data}  = await getAll();
+    
+    
     return /* html */ `
         <div class="heading my-4">
             <h2 class="text-purple-900 text-2xl font-bold uppercase">Sản phẩm</h2>
@@ -29,5 +31,8 @@ const News = {
         </article>
 `
   },
+  afterRender(){
+   
+  }
 };
 export default News;

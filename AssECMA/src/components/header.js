@@ -36,7 +36,7 @@ const Header = {
                 >
                 </li>
                 <li>
-                <a href="/student" class="hover:border-b border-white"
+                <a href="/products" class="hover:border-b"
                     >Sản phẩm</a
                 >
                 </li>
@@ -62,13 +62,16 @@ const Header = {
     afterRender(){
         const account = document.querySelector("#account");
         const btnLogout = document.querySelector("#logout")
-        account.innerHTML = JSON.parse(localStorage.getItem('user')).email;
+        if(localStorage.getItem('user')){
+            account.innerHTML = JSON.parse(localStorage.getItem('user')).email;
+            btnLogout.addEventListener('click' , () => {
+                localStorage.removeItem('user');
+                reRender(Header, "#header");
+                
+            })
+        }
         
-        btnLogout.addEventListener('click' , () => {
-            localStorage.removeItem('user');
-            reRender(Header, "#header");
-            
-        })
+        
        
     }
 }

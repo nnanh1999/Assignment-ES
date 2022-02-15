@@ -30,5 +30,98 @@
       "username": "luv",
       "id": 2
     }
+  ],
+  "products" :[
+    {
+      "name" : "Iphone 11",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://cdn.tgdd.vn/Products/Images/42/153856/iphone-xi-do-600x600.jpg",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 1,
+      "id" : 1
+    },
+    {
+      "name" : "Iphone 12",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-gold-1-600x600.jpg",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 1,
+      "id" : 2
+    },
+    {
+      "name" : "Iphone 13",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://cdn.tgdd.vn/Products/Images/42/230521/iphone-13-pro-sierra-blue-600x600.jpg",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 1,
+      "id" : 3
+    },
+    {
+      "name" : "Macbook",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 2,
+      "id" : 4
+    },
+    {
+      "name" : "Macbook",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 2,
+      "id" : 5
+    },
+    {
+      "name" : "PC",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 3,
+      "id" : 7
+    },
+    {
+      "name" : "PC",
+      "price" : 1000,
+      "disc" : 10,
+      "image" : "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
+      "desc" : "Mô tả",
+      "quantity" : 100,
+      "createdAt" : "22/2/2022",
+      "categoryId" : 3,
+      "id" : 8
+    }
+  ],
+  "categories" :[
+    {
+      "id" : 1,
+      "name" : "Điện thoại"
+    },
+    {
+      "id" : 3,
+      "name" : "PC"
+    },
+    {
+      "id" : 2,
+      "name" : "Lap"
+    }
   ]
 }

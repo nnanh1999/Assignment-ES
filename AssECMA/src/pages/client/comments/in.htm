@@ -1,0 +1,38 @@
+
+    <ul id="list-user"></ul>
+    <ul id="page-number"></ul>
+    <script> 
+            function loadData(page, per_page){
+            option_axios = {
+                url : 'https://reqres.in/api/users?page='+page+'&per_page=' + per_page,
+                method: 'get',
+                responseType:'json'
+            }
+            axios( option_axios )
+            .then(function(data_res){
+                console.log(data_res);
+                //------ hiển thị dữ liệu
+                list_user = data_res.data.data;
+                str_li = ''
+                list_user.forEach(function(user){
+                    str_li += '<li>' + user.id + '--' + user.email + '</li>';
+                })
+                document.querySelector('#list-user').innerHTML = str_li;
+                //--- hiển thị số trang
+                li_page = ''
+                for(i = 1; i<= data_res.data.total_pages; i++){
+                    li_page += '<li> <a href="#"  onclick="loadData( '+ i +', '+per_page+')"  >'+ i + '</a></li>';
+                }
+                document.querySelector('#page-number').innerHTML = li_page;          
+            })
+            .catch(function (ex){
+                console.log(ex);
+            })
+            ;
+
+        }
+        loadData(1,5)
+    </script>
+</body>
+</html>
+
