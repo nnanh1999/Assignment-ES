@@ -7,7 +7,7 @@ const News = {
     
     return /* html */ `
         <div class="heading my-4">
-            <h2 class="text-purple-900 text-2xl font-bold uppercase">Sản phẩm</h2>
+            <h2 class="text-purple-900 text-2xl font-bold uppercase">Tin tức</h2>
         </div>
         <article class="post grid grid-cols-3 gap-10 text-justify">
         ${data

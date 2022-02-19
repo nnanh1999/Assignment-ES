@@ -3,6 +3,9 @@ import Navigo from "navigo";
 // client
 import HomePage from "./pages/client/home";
 import DetailNewsPage from "./pages/client/detail-news";
+import Products from "./pages/client/products/list";
+import Categories from "./pages/client/categories/list";
+import productDetailPage from "./pages/client/products/detail";
 // login
 import SignUpPage from "./pages/client/sign-up";
 import SignInPage from "./pages/client/sign-in";
@@ -11,10 +14,14 @@ import DashBoardPage from "./pages/admin/dashboard";
 import NewsPage from "./pages/admin/news/list";
 import AddNewPage from "./pages/admin/news/add";
 import EditNewsPage from "./pages/admin/news/edit";
-import Products from "./pages/client/products/list";
-import Categories from "./pages/client/categories/list";
+import cartList from "./pages/client/cart/list";
+import productsPage from "./pages/admin/products/list";
+import ProductEditPage from "./pages/admin/products/edit";
+import productAddForm from "./pages/admin/products/add";
 
-const router = new Navigo("/", { linksSelector: "a" });
+
+
+const router = new Navigo("/", { linksSelector: "a", hash : true });
 const print = async (content,id) => {
     document.getElementById("app").innerHTML = await content.render(id);
     if(content.afterRender) content.afterRender(id);
@@ -51,8 +58,16 @@ router.on({
     "/products" : ()=>{
         print(Products);
     },
+    "/product-detail/:id": (value) => {
+        print(productDetailPage,value.data.id);
+
+    },
     "/categories" : ()=>{
         print(Categories);
+    },
+    // cart
+    "/my-cart" : ()=>{
+        print(cartList);
     },
     // login
     
@@ -68,6 +83,7 @@ router.on({
     "/admin/dashboard":() => {
         print(DashBoardPage);
     },
+
     "/admin/news":() => {
         print(NewsPage);
     },
@@ -77,6 +93,15 @@ router.on({
     "/admin/news/:id/edit": (value) => {
         print(EditNewsPage,value.data.id);
 
+    },
+    "/admin/products":() => {
+        print(productsPage);
+    },
+    "/admin/products/add":() => {
+        print(productAddForm);
+    },
+    "/admin/products/:id/edit":({data}) => {
+        print(ProductEditPage, data.id);
     }
     
     

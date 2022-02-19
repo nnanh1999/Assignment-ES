@@ -4,26 +4,22 @@ const Header = {
     render(){
         return /* html */`
         <header>
-            <div class="bg-purple-900 h-24 flex items-center justify-center">
+            <div class="bg-white h-24 flex items-center justify-center">
             <a href=""
                 ><img
-                src="./images/favpng_fpt-polytechnic-logo-image-symbol.png"
+                src=""
                 class="w-30 h-24"
             /></a>
             <span>
             
             </div>
-            <div id="" class="text-right bg-blue-700">
-                <span id="account" class="p-5 text-white"></span>
-                
-                ${(localStorage.getItem('user')) ? '<button id="logout" class="px-5 text-white">Log out</button>' : '<a id="login" href="/signin" class="px-5 text-white">Log in</a>'}
-            </div>
-            <nav id="nav" class="bg-orange-400">
+            
+            <nav id="nav" class="bg-black">
             <ul
                 class="h-10 flex flex-row justify-around items-center text-white text-xs"
             >
                 <li>
-                <a href="/" class="hover:border-b border-white">Trang chủ</a>
+                <a href="/#/" class="hover:border-b border-white">Trang chủ</a>
                 </li>
                 <li>
                 <a href="/about" class="hover:border-b border-white"
@@ -36,7 +32,7 @@ const Header = {
                 >
                 </li>
                 <li>
-                <a href="/products" class="hover:border-b"
+                <a href="/#/products" class="hover:border-b"
                     >Sản phẩm</a
                 >
                 </li>
@@ -48,12 +44,18 @@ const Header = {
                     class="bg-white h-7 w-64 outline-none text-gray-500 text-xs"
                     type="text"
                 />
-                <button
-                    class="bg-purple-900 h-7 w-28 ml-2 hover:border border-white"
-                >
-                    Tìm kiếm
-                </button>
+                
                 </form>
+                <div id="" class="text-right">
+                    <span id="account" class="p-5 text-white"></span>
+                    
+                    ${(localStorage.getItem('user')) 
+                    ? '<button id="logout" class="text-white "><ion-icon class="text-xl"name="log-out"></ion-icon></button>'  
+                    : '<a id="login" href="/signin"> <ion-icon class="text-xl" name="contact"></ion-icon></a>'}
+                </div>
+                <div> 
+                    <a  href="/my-cart"><ion-icon class="text-xl" name="cart"></ion-icon></a> 
+                </div>
             </ul>
             </nav>
         </header>

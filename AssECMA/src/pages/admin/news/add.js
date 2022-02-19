@@ -1,23 +1,24 @@
 import axios from "axios";
-import navAdmin from "../../../components/navAdmin";
 
 import { add } from "../../../../api/posts";
+import headerAdmin from "../../../components/headerAdmin";
 
 const AddNewPage = {
-  render() {
+  async render() {
     return /* html */ `
         <div class="min-h-full">
             <!--nav-->
-            ${navAdmin.render()}
+            ${await headerAdmin.render()}
             <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold text-gray-900">
-                News
+                    Thêm Mới
                 </h1>
             </div>
             </header>
-            <main>  
+             
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <main> 
                 <!-- Replace with your content -->
                 <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news">Quay lại</a> </div>
                 <div class="px-4 py-6 sm:px-0">
@@ -66,34 +67,39 @@ const AddNewPage = {
     afterRender(){
       const formAdd = document.querySelector("#form-add");
       const image = document.querySelector("#image");
+      const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ph-th/image/upload";
+      const preset = "rjbb3yjz";
+      
       image.addEventListener('change', async (e)=>{
 
-        const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ph-th/image/upload";
-
-        const file = e.target.files[0];
-
-        const formData = new FormData();
-
-        formData.append('file',file);
-        formData.append("upload_preset","rjbb3yjz")
-
-        // call api
-        const response =  await axios.post( CLOUDINARY_API ,formData,{
-           headers: {
-               "Content-Type" : "application/form-data",
-           } 
+        
         });
         
         // eslint-disable-next-line no-console
-        console.log(response.data.url);
-        formAdd.addEventListener("submit", (ev) => {
+        formAdd.addEventListener("submit",async (ev) => {
             ev.preventDefault();
+            const today = new Date();
+            const date = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
+            const time = `${today.getHours()  }:${  today.getMinutes()  }:${  today.getSeconds()}`;
+            const dateTime = `${date} ${time}`;
+           //
+            const file = image.files[0];
+            const formData = new FormData();
+            formData.append('file',file);
+            formData.append("upload_preset",preset)
+            // call api
+            const response =  await axios.post( CLOUDINARY_API ,formData,{
+                headers: {
+                    "Content-Type" : "application/form-data",
+                }
+            });
             add ({
                 title: document.querySelector("#title").value,
                 img: response.data.url,
-                desc: document.querySelector("#desc").value
+                desc: document.querySelector("#desc").value,
+                createdAt : dateTime
             });
-          });
+          
         
     });
     

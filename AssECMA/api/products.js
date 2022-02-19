@@ -14,7 +14,7 @@ export const get = (id) =>{
 }
 export const add = (data) =>{
     const url = `/products`;
-    return instance.product(url, data);
+    return instance.post(url, data);
 }
 export const remove = (id) =>{
     const url = `/products/${id}`;

@@ -5,20 +5,19 @@ import Categories from '../categories/list';
 const Products = {
   async render() {
     const { data } = await getAll();
-
     return /* html */ `
         <div class="container max-w-5xl mx-auto max-h-full">  
             <div id="header">
                 ${Header.render()}
             </div>  
-            <div>
+            <div class="flex flex-row">
             <input
             type="text"
             class="
               form-control
               block
               mt-5
-              w-80
+              text-center
               px-3
               py-1.5
               text-base
@@ -35,6 +34,9 @@ const Products = {
             id="search"
             placeholder="Tìm kiếm"
           />
+          <select name="" id=""> 
+            <option value="#">Lọc theo giá</option>  
+          </select>
           <div>
             <p id="key"></p>
           </div>
@@ -49,10 +51,10 @@ const Products = {
                     (post) => `
                     <div class="p-4 border border-gray-300 ">
                         <div class="box-img">
-                            <a href="/products/${post.id}"><img src="${post.image}" alt="" class="h-58 w-72"></a>
+                            <a href="/#/product-detail/${post.id}"><img src="${post.image}" alt="" class="h-58 w-72"></a>
                         </div>
                         <div class="box-title py-2">
-                            <h2 class="text-orange-600 font-bold text-lg"><a href="/products/${post.id}"  
+                            <h2 class="text-orange-600 font-bold text-lg"><a href="/#/product-detail/${post.id}"  
                             class="text-orange-600 font-bold text-xl ">${post.name}</a></h2>
                         </div>
                         <div class="box-text py-2">
@@ -64,18 +66,16 @@ const Products = {
                   .join('')}
                 </article>
             </div>
-            <footer class="bg-purple-900 h-12 flex items-center justify-center mt-4">
-            <span class="text-white font-xs">Nguyễn Nhật Anh</span>
-            </footer>
+           
         </div>
 
         `;
   },
   afterRender() {
+    Header.afterRender();
     const btns = document.querySelectorAll('.btn');
     btns.forEach( async (btnElement) => {
       const {id} = btnElement.dataset;
-
       btnElement.addEventListener('click', async () => {
         const { data } = await getByCategory(id);
         let showProducts = ``;       
@@ -83,20 +83,18 @@ const Products = {
             showProducts += `
               <div class="p-4 border border-gray-300 ">
                 <div class="box-img">
-                    <a href="/products/${element.id}"><img src="${element.image}" alt="" class="h-58 w-72"></a>
+                    <a href="/#/product-detail/${element.id}"><img src="${element.image}" alt="" class="h-58 w-72"></a>
                 </div>
                 <div class="box-title py-2">
-                    <h2 class="text-orange-600 font-bold text-lg"><a href="/products/${element.id}"  
+                    <h2 class="text-orange-600 font-bold text-lg"><a href="/#/product-detail/${element.id}"  
                     class="text-orange-600 font-bold text-xl ">${element.name}</a></h2>
                 </div>
                 <div class="box-text py-2">
                     <p class="text-sm">${element.desc}</p>
                 </div>
             </div>
-          `
-          
-        });
-        
+          `        
+        });   
         document.querySelector('.products').innerHTML = showProducts;
       });
     const search = document.querySelector("#search");
@@ -104,19 +102,19 @@ const Products = {
       if(event.keyCode === 13){
         const keyword = event.target.value;
         const data = filterKeyword(keyword);
-        
+        // eslint-disable-next-line no-shadow
         data.then(({data})=>{
-          console.log({keyword});
+          // console.log({keyword});
           let showProducts = ``;       
           data.forEach(element => {   
               showProducts += `
                 <div class="p-4 border border-gray-300 ">
                 
                   <div class="box-img">
-                      <a href="/products/${element.id}"><img src="${element.image}" alt="" class="h-58 w-72"></a>
+                      <a href="/#/product-detail/${element.id}"><img src="${element.image}" alt="" class="h-58 w-72"></a>
                   </div>
                   <div class="box-title py-2">
-                      <h2 class="text-orange-600 font-bold text-lg"><a href="/products/${element.id}"  
+                      <h2 class="text-orange-600 font-bold text-lg"><a href="/#/product-detail/${element.id}"  
                       class="text-orange-600 font-bold text-xl ">${element.name}</a></h2>
                   </div>
                   <div class="box-text py-2">

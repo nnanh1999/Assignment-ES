@@ -1,21 +1,21 @@
-import navAdmin from "../../../components/navAdmin";
+import axios from "axios";
 import { get, update } from "../../../../api/posts";
+import headerAdmin from "../../../components/headerAdmin";
 
 const EditNewsPage = {
     async render(id) {
         const {data} = await get(id);
       return /* html */ `
-          <div class="min-h-full">
+
             <!--nav-->
-            ${navAdmin.render()}
-              <header class="bg-white shadow">
-              <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                  <h1 class="text-3xl font-bold text-gray-900">
-                  News
-                  </h1>
-              </div>
-              </header>
-              <main>  
+            ${await headerAdmin.render()}
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold text-gray-900">
+                        Cập nhật
+                    </h1>
+                </div>
+                </header>
               <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                   <!-- Replace with your content -->
                   <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news/add">Thêm Mới</a> </div>
@@ -35,52 +35,65 @@ const EditNewsPage = {
                                       <input id="title"
                                       value="${data.title}" type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
                                   </div>
-                          
                                   <div>
                                       <label class="block mb-1 font-bold text-gray-500">Image</label>
-                                      <input id="img"
+                                      <input id="image"
                                       type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
                                       <img src="${data.img}" class="w-24">
                                   </div>
-                          
                                   <div>
                                       <label class="block mb-1 font-bold text-gray-500">Create At</label>
                                       <input id="createdAt"
                                       value="${data.createdAt}" type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
                                   </div>
-                          
                                   <div>
                                       <label class="block mb-1 font-bold text-gray-500">Desc</label>
                                       <input id="desc" 
                                       value="${data.desc}"  class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"/>
                                   </div>
-                          
                                   <button id="update" class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300">Cập nhật</button>
-  
-                              </form>
+                                </form>
                               </div>
                                   
                           </div>
-                      </div>  
-                 
-                  
+                      </div> 
               </div>
-              </main>
-          </div>
+
+
           `;
     },
     afterRender(id){
-        const formEdit = document.querySelector("#formEdit");
-        formEdit.addEventListener('submit' , (e) => {
-            e.preventDefault(); 
-            update({
-                id,
-                title : document.querySelector("#title").value,
-                createdAt :document.querySelector("#createdAt").value,
-                desc : document.querySelector("#desc").value
-            })
-        })
-    }
+        document.querySelector("#image").addEventListener('change' , async (e)=>{
+            e.preventDefault();
+            const API = 'https://api.cloudinary.com/v1_1/ph-th/image/upload';
+            const file = e.target.files[0];
+      
+            const formData = new FormData();
+      
+            formData.append('file',file);
+            formData.append("upload_preset", 'rjbb3yjz')
+           
+            // call api
+            const {data} =  await axios.post( API ,formData,{
+                headers: {
+                    "Content-Type" : "application/form-data",
+                } 
+            });
+            
+            const formEdit = document.querySelector("#formEdit");
+            formEdit.addEventListener('submit' , (ev) => {
+            ev.preventDefault();
+                update({
+                    id,
+                    img : data.url,
+                    title : document.querySelector("#title").value,
+                    createdAt :document.querySelector("#createdAt").value,
+                    desc : document.querySelector("#desc").value
+                });
+            });
+        });
+    
+    },
   };
   
 export default EditNewsPage;

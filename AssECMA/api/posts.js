@@ -20,3 +20,7 @@ export const update = (post) => {
     const url = `/posts/${post.id}`;
     return instance.put(url,post);
 }
+export const filterKeyword = (keyword) => {
+    const url = `/posts?q=${keyword}`;
+    return instance.get(url);
+}

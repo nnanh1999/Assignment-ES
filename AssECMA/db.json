@@ -1,16 +1,39 @@
 {
   "posts": [
     {
-      "title": "post one",
-      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644560897/iqcpjifrpbtvwmk4nrt1.jpg",
-      "desc": "Mai trượt",
-      "id": 2
+      "id": 9,
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645176656/f67vguycjxymtm8dctt4.gif",
+      "title": "test date",
+      "createdAt": "14:45:32",
+      "desc": "alp"
     },
     {
-      "title": "abc",
-      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644643331/ilunxszufla4yvr1rnrk.jpg",
-      "desc": "a",
-      "id": 4
+      "title": "Cháu xin phép cô chú",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645084018/cntcagmil6ib9xburfbg.png",
+      "desc": "Cho cháu lấy em ",
+      "createdAt": "17-2-2022 14:47:6",
+      "id": 10
+    },
+    {
+      "title": "Về làm vợ",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645084046/qkf3vt2s67kclgykouqk.png",
+      "desc": "1 hôm",
+      "createdAt": "17-2-2022 14:47:27",
+      "id": 11
+    },
+    {
+      "title": "Mai cháu trả",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645084046/qkf3vt2s67kclgykouqk.png",
+      "desc": "Cảm ơn",
+      "createdAt": "17-2-2022 14:47:38",
+      "id": 12
+    },
+    {
+      "title": "Mai cháu trả",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645084055/auauv2mbdjpe0wqixvn0.png",
+      "desc": "Cảm ơn",
+      "createdAt": "17-2-2022 14:47:38",
+      "id": 13
     }
   ],
   "comments": [],
@@ -31,97 +54,106 @@
       "id": 2
     }
   ],
-  "products" :[
+  "products": [
     {
-      "name" : "Iphone 11",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://cdn.tgdd.vn/Products/Images/42/153856/iphone-xi-do-600x600.jpg",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 1,
-      "id" : 1
+      "id": 1,
+      "name": "Iphone 11",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645175450/jqglh8kzaxfo3ehitnf9.jpg",
+      "createdAt": "22/2/2033",
+      "price": "1000",
+      "desc": "Mô tả",
+      "quantity": "100",
+      "categoryId": "1"
     },
     {
-      "name" : "Iphone 12",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-gold-1-600x600.jpg",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 1,
-      "id" : 2
+      "name": "Iphone 12",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-gold-1-600x600.jpg",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 1,
+      "id": 2
     },
     {
-      "name" : "Iphone 13",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://cdn.tgdd.vn/Products/Images/42/230521/iphone-13-pro-sierra-blue-600x600.jpg",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 1,
-      "id" : 3
+      "name": "Iphone 13",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://cdn.tgdd.vn/Products/Images/42/230521/iphone-13-pro-sierra-blue-600x600.jpg",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 1,
+      "id": 3
     },
     {
-      "name" : "Macbook",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 2,
-      "id" : 4
+      "name": "Macbook",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 2,
+      "id": 4
     },
     {
-      "name" : "Macbook",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 2,
-      "id" : 5
+      "name": "Macbook",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://cdn.shopify.com/s/files/1/1964/8079/products/20190509_162455-01_2048x2048.jpeg?v=1557436052",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 2,
+      "id": 5
     },
     {
-      "name" : "PC",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 3,
-      "id" : 7
+      "name": "PC",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 3,
+      "id": 7
     },
     {
-      "name" : "PC",
-      "price" : 1000,
-      "disc" : 10,
-      "image" : "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
-      "desc" : "Mô tả",
-      "quantity" : 100,
-      "createdAt" : "22/2/2022",
-      "categoryId" : 3,
-      "id" : 8
+      "name": "PC",
+      "price": 1000,
+      "disc": 10,
+      "image": "https://th.bing.com/th/id/OIP.CpSfKGuAywwBmkhtDgx2GgHaHa?pid=ImgDet&rs=1",
+      "desc": "Mô tả",
+      "quantity": 100,
+      "createdAt": "22/2/2022",
+      "categoryId": 3,
+      "id": 8
+    },
+    {
+      "name": "Thuôc'",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645167122/s5yoql30zfia3iurwssj.jpg",
+      "price": "1",
+      "desc": "Sản phẩm này không phải thuốc",
+      "quantity": "1",
+      "createdAt": "18-2-2022 13:52:3",
+      "categoryId": "1",
+      "id": 9
     }
   ],
-  "categories" :[
+  "categories": [
     {
-      "id" : 1,
-      "name" : "Điện thoại"
+      "id": 1,
+      "name": "Điện thoại"
     },
     {
-      "id" : 3,
-      "name" : "PC"
+      "id": 3,
+      "name": "PC"
     },
     {
-      "id" : 2,
-      "name" : "Lap"
+      "id": 2,
+      "name": "Lap"
     }
   ]
 }

@@ -10,12 +10,12 @@ const HomePage = {
                 ${Header.render()}
             </div>  
             <div class="banner my-2">
-                <a href=""><img src="https://caodang.fpt.edu.vn/wp-content/uploads/Banner-PC-1.png" class="" alt="abc"></a>
+                <a href=""></a>
             </div>
             <div class="content">
                 ${await News.render()}
             </div>
-            <footer class="bg-purple-900 h-12 flex items-center justify-center mt-4">
+            <footer class="bg-black h-12 flex items-center justify-center mt-4">
             <span class="text-white font-xs">Nguyễn Nhật Anh</span>
             </footer>
         </div>
