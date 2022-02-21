@@ -4,6 +4,10 @@ export const getAll = () =>{
     const url = '/products';
     return instance.get(url);
 }
+export const getAllandCate = () =>{
+    const url = '/products?_expand=category';
+    return instance.get(url);
+}
 export const getByCategory = (id) =>{
     const url = `/categories/${id}?_embed=products`;
     return instance.get(url);

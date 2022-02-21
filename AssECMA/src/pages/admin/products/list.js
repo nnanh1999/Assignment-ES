@@ -1,5 +1,10 @@
-import { filterKeyword, getAll } from '../../../../api/products';
+
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css"
+import { filterKeyword, getAll, remove } from '../../../../api/products';
+import reRender from '../../../../ultis/reRender';
 import headerAdmin from '../../../components/headerAdmin';
+
 
 const productsPage = {
   async render() {
@@ -21,7 +26,7 @@ const productsPage = {
             <main>  
                 <div class="max-w-max mx-auto py-6 sm:px-6 lg:px-8">
                     <!-- Replace with your content -->
-                    <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news/add">Thêm Mới</a> </div>
+                    <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/products/add">Thêm Mới</a> </div>
                     <div class="px-4 py-6 sm:px-0">
                         <div class="border-4 border-dashed border-gray-200 rounded-lg">
                             <div class="p-5">
@@ -38,7 +43,7 @@ const productsPage = {
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantiy</th>
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CategoryId</th>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                              
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" colspan = "2">Chức năng</th>
                                             </tr>
                                         </thead>
@@ -60,16 +65,14 @@ const productsPage = {
                                                         <td class="px-6 py-4 text-sm text-gray-500">${product.createdAt}</td>
                                                         <td class="px-6 py-4 text-sm text-gray-500">${product.categoryId}</td>
 
-                                                        <td class="px-6 py-4 text-sm text-gray-500">
-                                                            <span class="text-sm bg-green-500 text-white rounded-full px-2 py-1">Active</span>
-                                                        </td>
+                                               
                                                         <td class="text-center py-4">
                                                             <a href="/#/admin/products/${product.id}/edit"><span class="fill-current text-green-500 material-icons">Edit</span></a>
-                                                            <a href="#"><span class="fill-current text-red-500 material-icons">Delete</span></a>
+                                                            <button data-id="${product.id}" class="btn btn-delete fill-current text-red-500 material-icons">Xóa</button></a>
                                                         </td>
                                                     </tr>  
                                                 `
-                                            )}
+                                            ).join('')}
                                                 
                                             </tbody>
                                     </table>
@@ -87,6 +90,7 @@ const productsPage = {
         `;
   },
   afterRender(){
+
     const btnSearch = document.querySelector("#search-toggle");
     btnSearch.onkeydown =  (event) => {
       if(event.keyCode === 13){
@@ -126,6 +130,18 @@ const productsPage = {
         });
       };
     };
+    const btns = document.querySelectorAll(".btn");
+    btns.forEach((btn)=>{
+        const {id} = btn.dataset;
+        // console.log(id); 
+        btn.addEventListener('click' , ()=>{
+            const confilm  =window.confirm("Bạn chắc chắn xóa");
+            if(confilm) remove(id) .then(()=>{
+                reRender(productsPage,"#app");
+                toastr.success("Xóa sản phẩm thành công");
+            });
+        })
+    })
   },
 };
 export default productsPage;

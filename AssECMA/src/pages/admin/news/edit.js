@@ -1,6 +1,8 @@
 import axios from "axios";
+import toastr from 'toastr';
 import { get, update } from "../../../../api/posts";
 import headerAdmin from "../../../components/headerAdmin";
+import "toastr/build/toastr.min.css"
 
 const EditNewsPage = {
     async render(id) {
@@ -39,7 +41,7 @@ const EditNewsPage = {
                                       <label class="block mb-1 font-bold text-gray-500">Image</label>
                                       <input id="image"
                                       type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                                      <img src="${data.img}" class="w-24">
+                                      <img id="imgHide" src="${data.img}" class="w-24">
                                   </div>
                                   <div>
                                       <label class="block mb-1 font-bold text-gray-500">Create At</label>
@@ -63,35 +65,40 @@ const EditNewsPage = {
           `;
     },
     afterRender(id){
-        document.querySelector("#image").addEventListener('change' , async (e)=>{
-            e.preventDefault();
-            const API = 'https://api.cloudinary.com/v1_1/ph-th/image/upload';
-            const file = e.target.files[0];
-      
-            const formData = new FormData();
-      
-            formData.append('file',file);
-            formData.append("upload_preset", 'rjbb3yjz')
-           
-            // call api
-            const {data} =  await axios.post( API ,formData,{
-                headers: {
-                    "Content-Type" : "application/form-data",
-                } 
-            });
-            
-            const formEdit = document.querySelector("#formEdit");
-            formEdit.addEventListener('submit' , (ev) => {
+        const API = 'https://api.cloudinary.com/v1_1/ph-th/image/upload';
+        const preset = 'rjbb3yjz';
+        const image = document.querySelector("#image");
+        let imgLink = '';
+        const imgHide = document.querySelector("#imgHide");
+
+        image.addEventListener('change' , async (e)=>{
+            e.preventDefault(); 
+            imgHide.src = URL.createObjectURL(e.target.files[0])
+        });
+
+        const formEdit = document.querySelector("#formEdit");
+            formEdit.addEventListener('submit' ,async (ev) => {
             ev.preventDefault();
+                const file = image.files[0];
+                const formData = new FormData();
+                formData.append('file',file);
+                formData.append("upload_preset", preset)
+                // call api
+                const {data} =  await axios.post( API ,formData,{
+                    headers: {
+                        "Content-Type" : "application/form-data",
+                    } 
+                });
+                imgLink = data.url;
                 update({
                     id,
-                    img : data.url,
+                    img :imgLink || imgHide.src,
                     title : document.querySelector("#title").value,
                     createdAt :document.querySelector("#createdAt").value,
                     desc : document.querySelector("#desc").value
                 });
+                toastr.success("Cập nhật sản phẩm thành công")
             });
-        });
     
     },
   };

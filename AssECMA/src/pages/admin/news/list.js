@@ -1,6 +1,8 @@
+import toastr from 'toastr';
 import { filterKeyword, getAll, remove } from '../../../../api/posts';
 import reRender from '../../../../ultis/reRender';
 import headerAdmin from '../../../components/headerAdmin';
+import "toastr/build/toastr.min.css"
 
 const NewsPage = {
     async render(){
@@ -80,6 +82,7 @@ const NewsPage = {
                 const confirm = window.confirm("Bạn chắc chắn xóa?")
                 if(confirm) remove(id).then(()=>{
                     reRender(NewsPage,"#app");
+                    toastr.success("Xóa sản phẩm thành công");
                 });
                 
             })

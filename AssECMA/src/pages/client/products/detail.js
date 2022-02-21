@@ -1,14 +1,15 @@
 import { get } from "../../../../api/products";
 import { addToCart } from "../../../../ultis/cart";
+import reRender from "../../../../ultis/reRender";
 import Header from "../../../components/header";
 
 const productDetailPage = {
     async render(id){
         const {data} = await get(id);
         return /* html */`
-        <div class="container max-w-5xl mx-auto max-h-full">  
+        <div class="container w-full mx-auto max-h-full">  
         <div id="header">
-                ${Header.render()}
+                ${ Header.render()}
             </div>  
             <div class="md:flex items-start justify-between py-12 2xl:px-20 md:px-6 px-4">
             <div class="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
@@ -89,6 +90,8 @@ const productDetailPage = {
         `
     },
     afterRender(id){
+        Header.afterRender();
+
         const elements = document.querySelectorAll("[data-menu]");
         // eslint-disable-next-line no-plusplus
         for (let i = 0; i < elements.length; i++) {
@@ -102,12 +105,13 @@ const productDetailPage = {
             });
         }
         
-        
+  
         const btnAddCart = document.querySelector('.btn-add-cart');
         btnAddCart.addEventListener('click' ,async ()=>{
             const {data} = await get(id);
-
-            addToCart({...data, quantity : +document.querySelector("#qty").value})
+            addToCart({...data, quantity : +document.querySelector("#qty").value},()=>
+            {reRender(productDetailPage,"#header")})
+            location.reload();
            
         })
     }

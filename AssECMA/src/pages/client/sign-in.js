@@ -1,10 +1,13 @@
+import $ from 'jquery';
 import { signin } from "../../../api/user";
 import Header from "../../components/header";
-
+// eslint-disable-next-line import/order
+import validate  from 'jquery-validation';
+// eslint-disable-next-line no-unused-vars
 const SignInPage = {
     render(){
         return /* html */`
-        <div class="container max-w-5xl mx-auto max-h-full">  
+        <div class="container w-full mx-auto max-h-full">  
         ${Header.render()} 
             <div class="min-h-full flex items-center justify-center py-40 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
@@ -35,10 +38,7 @@ const SignInPage = {
             
                     <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                        Remember me
-                        </label>
+                        
                     </div>
             
                     <div class="text-sm">
@@ -69,28 +69,56 @@ const SignInPage = {
         `
     },
     afterRender(){
-        const formSignin = document.querySelector("#formSignin");
-        formSignin.addEventListener( 'submit' , async (e)=>{
-            e.preventDefault();
-                try {
-                    const res =  await signin({
-                        "email" : document.querySelector("#email").value,
-                        "password" : document.querySelector("#password").value
-                    });
-    
-                    localStorage.setItem('user',JSON.stringify(res.data.user));
-                    if(res.data.user.id === 1){
-                        document.location.href = "/admin/news";
-                    }else{
+        const formSignin = $("#formSignin");
+
+        formSignin.validate({
+            rules : {
+                "email" : {
+                    required : true,
+                },
+                "password" : {
+                    required : true,
+                },
+               
+            },
+            messages : {
+                "email" : {
+                    required : "Bạn chưa email",
+                },  
+                "password" : {
+                    required : "Mời nhập password",
+                },
+                
+            },
+            submitHandler() {
+                async function Login(){
+                    try {
+                        const res =  await signin({
+                            "email" : document.querySelector("#email").value,
+                            "password" : document.querySelector("#password").value
+                        });
+        
+                        localStorage.setItem('user',JSON.stringify(res.data.user));
+                        if(res.data.user.id === 1){
+                            document.location.href = "/admin/news";
+                        }else{
+                            document.location.href = "/";
+                        }
+        
+                    } 
+                    catch (error) {
                         document.location.href = "/";
                     }
-    
-                } 
-                catch (error) {
-                    document.location.href = "/";
                 }
+                Login();
+            }
+        
+        // formSignin.addEventListener( 'submit' , async (e)=>{
+        //     e.preventDefault();
                 
-        });
+                
+        // });
+    })
     }
 }
 export default SignInPage;

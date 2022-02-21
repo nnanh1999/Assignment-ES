@@ -18,6 +18,13 @@ import cartList from "./pages/client/cart/list";
 import productsPage from "./pages/admin/products/list";
 import ProductEditPage from "./pages/admin/products/edit";
 import productAddForm from "./pages/admin/products/add";
+import cartPayments from "./pages/client/cart/pay";
+import nullCart from "./pages/client/cart/null-cart";
+import CategoriesUploadPage from "./pages/admin/categories/add";
+import CategoriesPage from "./pages/admin/categories/list";
+import CartsPage from "./pages/admin/cart/list";
+import EditCategoryPage from "./pages/admin/categories/edit";
+
 
 
 
@@ -69,6 +76,12 @@ router.on({
     "/my-cart" : ()=>{
         print(cartList);
     },
+    "/paying" : () =>{
+        print(cartPayments);
+    },
+    "/null-cart" : () =>{
+        print(nullCart);
+    },
     // login
     
     "/signup": ()=> {
@@ -102,6 +115,18 @@ router.on({
     },
     "/admin/products/:id/edit":({data}) => {
         print(ProductEditPage, data.id);
+    },
+    "/admin/categories/add":() => {
+        print(CategoriesUploadPage);
+    },
+    "/admin/categories":() => {
+        print(CategoriesPage);
+    },
+    "admin/cart" :() =>{
+        print(CartsPage)
+    },
+    "admin/categories/:id/update" :({data}) =>{
+        print(EditCategoryPage, data.id)
     }
     
     

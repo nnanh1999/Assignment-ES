@@ -1,6 +1,8 @@
 import axios from 'axios';
+import toastr from 'toastr';
 import { get, update } from '../../../../api/products';
 import headerAdmin from '../../../components/headerAdmin';
+import "toastr/build/toastr.min.css"
 
 const ProductEditPage = {
   async render(id) {
@@ -18,7 +20,7 @@ const ProductEditPage = {
                 </header>
                 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
-                <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news/add">Thêm Mới</a> </div>
+                <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/products/add">Thêm Mới</a> </div>
                 <div class="px-4 py-6 sm:px-0">
                     <div class="border-4 border-dashed border-gray-200 rounded-lg">
                         <div class="p-5">
@@ -43,7 +45,7 @@ const ProductEditPage = {
                         <label class="block mb-1 font-bold text-gray-500">Image</label>
                         <input id="image"
                         type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                        <img src="${data.image}" class="w-24">
+                        <img id="imgHide" src="${data.image}" class="w-24">
                     </div>
                     <div>
                         <label class="block mb-1 font-bold text-gray-500">Create At</label>
@@ -91,39 +93,53 @@ const ProductEditPage = {
         `;
   },
   afterRender() {
-    document.querySelector("#image").addEventListener('change' , async (e)=>{
-      e.preventDefault();
-      const API = 'https://api.cloudinary.com/v1_1/ph-th/image/upload';
-      const file = e.target.files[0];
 
-      const formData = new FormData();
-
-      formData.append('file',file);
-      formData.append("upload_preset", 'rjbb3yjz')
-
-      // call api
-      const {data} =  await axios.post( API ,formData,{
-          headers: {
-              "Content-Type" : "application/form-data",
-          } 
-      });
-   
     const formEdit = document.querySelector('#formEdit');
-    formEdit.addEventListener('submit', (ev) => {
+    const API = 'https://api.cloudinary.com/v1_1/ph-th/image/upload';
+    const preset = 'rjbb3yjz';
+    const image = document.querySelector("#image");
+    const imgHide = document.querySelector("#imgHide");
+    let imgLink = '';
+    image.addEventListener('change' , async (e)=>{
+      e.preventDefault();
+          imgHide.src = URL.createObjectURL(e.target.files[0])
+    });
+
+    
+    formEdit.addEventListener('submit', async (ev) => {
       ev.preventDefault();
-     
+      
+      const file = image.files[0];
+      if(file){
+        const formData = new FormData();
+
+        formData.append('file',file);
+        formData.append("upload_preset", preset)
+  
+        // call api
+        const {data} =  await axios.post( API ,formData,{
+            headers: {
+                "Content-Type" : "application/form-data",
+            } 
+        });
+        imgLink = data.url;
+      } 
+
+      
+      
       update({
         id: document.querySelector('#id').value,
         name: document.querySelector('#name').value,
-        image: data.url,
+        image: imgLink || imgHide.src,
         createdAt: document.querySelector('#createdAt').value,
         price: document.querySelector('#price').value,
         desc: document.querySelector('#desc').value,
         quantity: document.querySelector('#quantity').value,
         categoryId: document.querySelector('#categoryId').value,
       });
+      toastr.success("Sửa sản phẩm thành công ")
     });
-    })
+   
     
   },
 };
