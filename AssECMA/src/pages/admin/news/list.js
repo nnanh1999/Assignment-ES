@@ -1,25 +1,30 @@
-import { remove } from '../../../../api/posts';
+import toastr from 'toastr';
+import { filterKeyword, getAll, remove } from '../../../../api/posts';
 import reRender from '../../../../ultis/reRender';
-import navAdmin from '../../../components/navAdmin';
+import headerAdmin from '../../../components/headerAdmin';
+import "toastr/build/toastr.min.css"
 
 const NewsPage = {
-    render(){
-        return fetch("http://localhost:3001/posts" , {
-        })
-        .then((response) => response.json())
-        .then((data)=> /* html */ ` 
+    async render(){
+        const {data} = await getAll();
+        return /* html */ ` 
             <div class="min-h-full">
                 <!--nav-->
-                ${navAdmin.render()}
+                ${await headerAdmin.render()}
                 <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <h1 class="text-3xl font-bold text-gray-900">
-                    News
-                    </h1>
-                </div>
+                    <div class="header-d max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <h1 class="text-3xl font-bold text-gray-900">
+                            Danh sách bài viết
+                        </h1>
+                        <form>
+                            <input class="shadow appearance-none border rounded w-200 py-2 px-3 
+                            text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            id="search-toggle" type="text" placeholder="Tìm kiếm">
+                        </form>
+                    </div>
                 </header>
                 <main>  
-                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="max-w-max mx-auto py-6 sm:px-6 lg:px-8">
                     <!-- Replace with your content -->
                     <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news/add">Thêm Mới</a> </div>
                     <div class="px-4 py-6 sm:px-0">
@@ -57,7 +62,9 @@ const NewsPage = {
                                         </tbody>
                                     </table>
                                 </div>
-    
+                                <div class="text-right mr-5">
+                                        <a href="#">1 . 2 . 3 . 4 . 5 >></a>
+                                </div>
                             </div>
                         </div>  
                     </div>
@@ -65,7 +72,7 @@ const NewsPage = {
                 </div>
                 </main>
             </div>
-        `);
+        `;
     },
     afterRender(){
         const btns =document.querySelectorAll(".btn");
@@ -75,10 +82,43 @@ const NewsPage = {
                 const confirm = window.confirm("Bạn chắc chắn xóa?")
                 if(confirm) remove(id).then(()=>{
                     reRender(NewsPage,"#app");
+                    toastr.success("Xóa sản phẩm thành công");
                 });
                 
             })
         });
-    } 
+        //
+        const btnSearch = document.querySelector("#search-toggle");
+        btnSearch.onkeydown = (event) => {
+            
+          if(event.keyCode === 13){
+            const keyword = event.target.value;
+            const dataPromise =  filterKeyword(keyword);
+            event.preventDefault();
+            dataPromise.then( ({data}) =>{
+                
+                document.querySelector("tbody").innerHTML = `
+                ${data
+                    .map(
+                    (post) =>  `
+                    <tr>
+                        <td class="whitespace-nowrap">${post.id}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${post.title}</td>                 
+                        <td class="px-6 py-4 text-sm text-gray-500"><img src="${post.img}" class="w-32" /></td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${post.desc}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${post.createdAt}</td>
+                        <td class="px-6 py-4 text-sm  text-indigo-600 hover:text-indigo-900"><button data-id="${post.id}" class="btn btn-delete">Xóa</button></td>
+                        <td class="px-6 py-4 text-sm text-red-600 hover:text-indigo-900"><a href="/admin/news/${post.id}/edit">Sửa</a></td>
+                    </tr>
+                    `).join('')
+                };
+                `;
+            });
+           
+          };
+        };
+        
+
+    }, 
 };
 export default NewsPage;

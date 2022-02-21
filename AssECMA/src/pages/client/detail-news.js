@@ -5,8 +5,9 @@ const DetailNewsPage = {
   async render(id) {
     const {data} = await get(id);
     return /* html */ `
-    <div class="container max-w-5xl mx-auto max-h-full">  
+    <div class="container w-full mx-auto max-h-full">  
         ${ Header.render()} 
+    <div class="p-24">
         <div class="news_title pt-5">
             <h1 class="text-2xl text-bold font-semibold italic md:not-italic text-black"> ${data.title} </h1>
         </div>
@@ -20,12 +21,13 @@ const DetailNewsPage = {
                 </div>
             </div>
             <div class="col-span-1">
-                <div  class="text-xs tahoma text-black"> ${data.desc} </div>
+                <div  class="text-xl tahoma text-black"> ${data.desc} </div>
             </div>
-        </div>
+        </div></div>    
         <footer class="bg-purple-900 h-12 flex items-center justify-center mt-4">
             <span class="text-white font-xs">Nguyễn Nhật Anh</span>
         </footer>
+        
     </div>
     
     `;

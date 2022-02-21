@@ -1,16 +1,46 @@
 {
   "posts": [
     {
-      "title": "post one",
-      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644560897/iqcpjifrpbtvwmk4nrt1.jpg",
-      "desc": "Mai trượt",
+      "id": 1,
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645434169/hyse5ti1udzfspbiw19j.png",
+      "title": "Dự báo thời tiết miền Bắc đón tết Nhâm Dần",
+      "createdAt": "21-2-2022 14:52:34",
+      "desc": "Ông Hoàng Phúc Lâm, Phó Giám Đốc Trung tâm Dự báo Khí tượng Thủy văn cho biết, Trong khoảng thời gian từ 29 tháng Chạp đến mùng 7 Tết, các tỉnh miền Bắc trời nhiều mây có mưa nhỏ, mưa phùn.Do tác động của không khí lạnh liên tiếp, dự báo thời tiết các tỉnh miền Bắc trong dịp Tết Nguyên đán Nhâm Dần 2022 sẽ có mưa rét. Vào đêm giao thừa trời rét đậm, mưa phùn."
+    },
+    {
+      "title": "ĐÓN KHÔNG KHÍ LẠNH TĂNG CƯỜNG",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645430014/f1b3hfvsyzlen7urmggz.png",
+      "desc": "Không khí lạnh tăng cường khiến trạng thái mưa rét ở các tỉnh miền Bắc và Bắc Trung Bộ kéo dài, nhiệt độ hạ rất thấp, vùng núi vùng núi khả năng có băng giá. Thời tiết Hà Nội duy trì thời tiết  giá lạnh, âm u với nhiệt độ thấp nhất 13-15 độ C.",
+      "createdAt": "21-2-2022 14:53:33",
       "id": 2
     },
     {
-      "title": "abc",
-      "img": "http://res.cloudinary.com/ph-th/image/upload/v1644643331/ilunxszufla4yvr1rnrk.jpg",
-      "desc": "a",
+      "title": "BLACK FRIDAY – SALE SẬP SÀN HÀNG NGÀN ƯU ĐÃI LÊN ĐẾN 70%",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645430100/muwjodus9dz1pzpakokr.jpg",
+      "desc": "Áo khoác gió luôn là sự lựa chọn hàng đầu mà 360 muốn giới thiệu, bởi sự tiện lợi và kiểu dáng của nó mang lại. Không chỉ có công dụng chống thấm nước tối ưu, mũ áo tiện lợi có cả công dụng chống nắng. Không những thế với khả năng giữ nhiệt điểm 10 tuyệt đối nên bạn không cần mặc nhiều áo tránh trường hợp bị cộm người. Và đặc biệt áo khoác nam sẽ không bao giờ lỗi mốt",
+      "createdAt": "21-2-2022 14:54:59",
+      "id": 3
+    },
+    {
+      "title": "BLACK FRIDAY – SALE SẬP SÀN HÀNG NGÀN ƯU ĐÃI LÊN ĐẾN 70%",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645430126/sxk34rylmwaxiuvxvkcq.png",
+      "desc": "Áo khoác gió luôn là sự lựa chọn hàng đầu mà shop muốn giới thiệu, bởi sự tiện lợi và kiểu dáng của nó mang lại. Không chỉ có công dụng chống thấm nước tối ưu, mũ áo tiện lợi có cả công dụng chống nắng. Không những thế với khả năng giữ nhiệt điểm 10 tuyệt đối nên bạn không cần mặc nhiều áo tránh trường hợp bị cộm người. Và đặc biệt áo khoác nam sẽ không bao giờ lỗi mốt",
+      "createdAt": "21-2-2022 14:55:25",
       "id": 4
+    },
+    {
+      "title": "BLACK Monday– SALE SẬP SÀN HÀNG NGÀN ƯU ĐÃI LÊN ĐẾN 100%",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645430149/bhiizg7tsqgecul7p3t7.jpg",
+      "desc": "Áo khoác gió luôn là sự lựa chọn hàng đầu mà shop muốn giới thiệu, bởi sự tiện lợi và kiểu dáng của nó mang lại. Không chỉ có công dụng chống thấm nước tối ưu, mũ áo tiện lợi có cả công dụng chống nắng. Không những thế với khả năng giữ nhiệt điểm 10 tuyệt đối nên bạn không cần mặc nhiều áo tránh trường hợp bị cộm người. Và đặc biệt áo khoác nam sẽ không bao giờ lỗi mốt",
+      "createdAt": "21-2-2022 14:55:48",
+      "id": 5
+    },
+    {
+      "title": "Sản phẩm nổi bật tháng 2",
+      "img": "http://res.cloudinary.com/ph-th/image/upload/v1645430433/ampxyymxhgeovhrixrbn.jpg",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "createdAt": "21-2-2022 15:0:33",
+      "id": 6
     }
   ],
   "comments": [],
@@ -29,6 +59,225 @@
       "password": "$2a$10$sf.SQ9TL3J6CQP73SlpLc.YQjWFIa83cJjanBAH4JOnOYmxtFDAM2",
       "username": "luv",
       "id": 2
+    },
+    {
+      "email": "anhnnph14686@fpt.edu.vn",
+      "password": "$2a$10$NHFfXpuv1UKaex8gC8cWC.vrdlu2/t75gJphkpTOtThlZ3WRd4UWK",
+      "username": "anhnnph14686",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Áo khoác #1",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428653/w2dddflewrbnbsyxfoud.jpg",
+      "createdAt": "21-2-2022 14:30:53",
+      "price": "530000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "categoryId": "1"
+    },
+    {
+      "name": "Áo thu đông",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428775/dnwhpzvtac0bbccllxvc.jpg",
+      "sale": "10",
+      "price": "250000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "100",
+      "createdAt": "21-2-2022 14:32:55",
+      "categoryId": 3,
+      "id": 2
+    },
+    {
+      "name": "Áo thu đông #2",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428810/qeocb021musp2rvxxxka.jpg",
+      "sale": "",
+      "price": "200000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:33:30",
+      "categoryId": 3,
+      "id": 3
+    },
+    {
+      "name": "Áo thu đông #3",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428825/bqahuudvrxvrcq2uucxo.jpg",
+      "sale": "",
+      "price": "230000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:33:45",
+      "categoryId": 3,
+      "id": 4
+    },
+    {
+      "name": "Áo thu đông #4",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428837/tok2zibzhvu0loc9ejvx.jpg",
+      "sale": "",
+      "price": "250000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:33:57",
+      "categoryId": 3,
+      "id": 5
+    },
+    {
+      "name": "Áo khoác #2",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428878/qzisy6iiocnrumpezmi2.jpg",
+      "sale": "",
+      "price": "550000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:34:38",
+      "categoryId": 1,
+      "id": 6
+    },
+    {
+      "name": "Áo khoác #3",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645428893/wonks4sacwlxkg7cna15.jpg",
+      "sale": "30",
+      "price": "550000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...\n",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:34:53",
+      "categoryId": 1,
+      "id": 7
+    },
+    {
+      "name": "Áo sơ mi #1",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429095/dqnoz9wavopkzqb7rgi7.jpg",
+      "sale": "50",
+      "price": "170000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:38:15",
+      "categoryId": 5,
+      "id": 8
+    },
+    {
+      "name": "Áo sơ mi #2",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429115/iuk57z49dbzqtdziq70p.jpg",
+      "sale": "30",
+      "price": "170000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:38:35",
+      "categoryId": 5,
+      "id": 9
+    },
+    {
+      "name": "Áo sơ mi #3",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429131/j2edpwvryihv8uokrprb.jpg",
+      "sale": "70",
+      "price": "270000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:38:51",
+      "categoryId": 5,
+      "id": 10
+    },
+    {
+      "name": "Áo gió #1",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429235/n6htjchfueiai7g2jqme.jpg",
+      "sale": "30",
+      "price": "470000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:40:35",
+      "categoryId": 2,
+      "id": 13
+    },
+    {
+      "name": "Áo len cao cấp",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429549/owen8f34gphtjc4acoov.jpg",
+      "sale": "20",
+      "price": "50000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "20",
+      "createdAt": "21-2-2022 14:45:51",
+      "categoryId": 3,
+      "id": 14
+    },
+    {
+      "name": "Áo vest",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645429829/pc6hwkjj7vwrxjq7n1vn.jpg",
+      "sale": "10",
+      "price": "900000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:50:29",
+      "categoryId": 1,
+      "id": 15
+    },
+    {
+      "name": "Áo len c1",
+      "image": "http://res.cloudinary.com/ph-th/image/upload/v1645430387/jyyukaxscnagullboh9n.jpg",
+      "sale": "5",
+      "price": "200000",
+      "desc": "Áo vest nam Adam Store may sẵn tôn dáng đủ size từ 50- 85kg trẻ trung, lịch sự chỉ từ 2.500.000đ Chất liệu vải nhập khẩu cao cấp không bai xù, nhăn co, màu sắc đa dạng, sắc nét. Áo vest có thể mặc trong các buổi tiệc, đi làm công sở, đi chơi...",
+      "quantity": "10",
+      "createdAt": "21-2-2022 14:59:47",
+      "categoryId": 3,
+      "id": 16
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Áo khoác"
+    },
+    {
+      "id": 3,
+      "name": "Áo len"
+    },
+    {
+      "id": 2,
+      "name": "Áo gió"
+    },
+    {
+      "id": 4,
+      "name": "Quần bò"
+    },
+    {
+      "name": "Áo sơ mi",
+      "id": 5
+    },
+    {
+      "name": "Áo vest",
+      "id": 6
+    }
+  ],
+  "carts": [
+    {
+      "email": "nnanh99pt@gmail.com",
+      "phone": "(+84) 971145489",
+      "name": "Anh Phú",
+      "address": "Phú Thọ ĐH",
+      "pttt": "1",
+      "createAt": "21-2-2022 15:6:17",
+      "totalPrice": 425000,
+      "id": 1
+    },
+    {
+      "email": "nnanh99pt@gmail.com",
+      "phone": "(+84) 971145489",
+      "name": " anh anh anh",
+      "address": "anh anh anh",
+      "pttt": "1",
+      "createAt": "21-2-2022 15:7:30",
+      "totalPrice": 225000,
+      "id": 2
+    },
+    {
+      "email": "nnanh99pt@gmail.com",
+      "phone": "(+84) 971145489",
+      "name": "anh anh",
+      "address": "anh anh",
+      "pttt": "1",
+      "createAt": "21-2-2022 15:47:35",
+      "totalPrice": 425000,
+      "id": 3
     }
   ]
 }
