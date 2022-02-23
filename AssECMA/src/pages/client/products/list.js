@@ -1,4 +1,4 @@
-import { filterKeyword, getAll, getByCategory } from '../../../../api/products';
+import { filterKeyword,  filterSortAsc, filterSortDesc, getAll, getByCategory } from '../../../../api/products';
 import Header from '../../../components/header';
 import Categories from '../categories/list';
 // eslint-disable-next-line prefer-const
@@ -47,10 +47,10 @@ const Products = {
             placeholder="Tìm kiếm"
           />
           
-          <select id="sort"  class="absolute right-24 top-4 h-12 mt-1 text-sm text-pink-700 w-200 rounded-lg cursor-pointer outline-none ">
-                <option class=" hidden">Lọc theo giá</option>
-                <option >Tăng dần</option>
-                <option>Giảm dần</option>
+          <select id="sort"   class="absolute right-24 top-4 h-12 mt-1 text-sm text-pink-700 w-200 rounded-lg cursor-pointer outline-none ">
+                <option class=" hidden">Sắp xếp theo giá</option>
+                <option value="asc">Tăng dần</option>
+                <option value="desc">Giảm dần</option>
  
             </select>
           
@@ -181,8 +181,79 @@ const Products = {
       renderProduct()
 
     })
-
     
+    function sortChanged()
+    {
+      const sort =document.querySelector("#sort");
+    
+      sort.addEventListener('change',(e)=>{
+        const sortValue = document.querySelector("#sort").value;
+      if (sortValue === ''){
+          console.log('chưa chọn gì');
+      }
+      else if (sortValue === 'asc'){
+        const dataSort = filterSortAsc();
+        dataSort.then(({data})=>{
+          document.querySelector(".products").innerHTML = `
+            ${data
+              .map(
+                (post,index) => 
+                  (index >= start && index< end) ?
+                    `
+                      <div class="p-4 border border-gray-300 ">
+                          <div class="box-img">
+                              <a href="/#/product-detail/${post.id}"><img src="${post.image}" alt="" class="h-58 w-72"></a>
+                          </div>
+                          <div class="box-title py-2">
+                              <h2 class="text-orange-600 font-bold text-lg"><a href="/#/product-detail/${post.id}"  
+                              class="text-orange-600 font-bold text-xl ">${post.name}</a></h2>
+                          </div>
+                          <div class="box-text py-2">
+                              <p class="text-sm">${post.price}</p>
+                          </div>
+                      </div>
+                  `:''   
+              )
+              .join('')}
+            `
+        })
+         
+      }
+      else if (sortValue === 'desc'){
+          const dataSort = filterSortDesc();
+          document.querySelector(".products").innerHTML = `
+            ${data
+              .map(
+                (post,index) => 
+                  (index >= start && index< end) ?
+                    `
+                      <div class="p-4 border border-gray-300 ">
+                          <div class="box-img">
+                              <a href="/#/product-detail/${post.id}"><img src="${post.image}" alt="" class="h-58 w-72"></a>
+                          </div>
+                          <div class="box-title py-2">
+                              <h2 class="text-orange-600 font-bold text-lg"><a href="/#/product-detail/${post.id}"  
+                              class="text-orange-600 font-bold text-xl ">${post.name}</a></h2>
+                          </div>
+                          <div class="box-text py-2">
+                              <p class="text-sm">${post.price}</p>
+                          </div>
+                      </div>
+                  `:''   
+              )
+              .join('')}
+            `
+      }
+      })
+        // const {value} = obj;
+      // console.log(obj);
+        
+        
+    }    
+    sortChanged();
+
+
+
     Header.afterRender();
     const btns = document.querySelectorAll('.btn');
     btns.forEach( async (btnElement) => {

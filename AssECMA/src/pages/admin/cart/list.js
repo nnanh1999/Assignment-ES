@@ -63,7 +63,7 @@ const CartsPage = {
 
                                                   
                                                   <td class="text-center py-4">
-                                                            <a href="/#/${product.id}/edit"><span class="fill-current text-green-500 material-icons">Chi tiết</span></a>
+                                                            <a href="/#/admin/detail-cart/${product.id}"><span class="fill-current text-green-500 material-icons">Chi tiết</span></a>
                                                             <button data-id="${product.id}" class="btn btn-delete fill-current text-red-500 material-icons">Xóa</button></a>
                                                         </td>
                                               </tr>  

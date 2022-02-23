@@ -24,6 +24,8 @@ import CategoriesUploadPage from "./pages/admin/categories/add";
 import CategoriesPage from "./pages/admin/categories/list";
 import CartsPage from "./pages/admin/cart/list";
 import EditCategoryPage from "./pages/admin/categories/edit";
+import detailCarts from "./pages/admin/cart/detail-cart";
+import addSize from "./pages/client/products/size/add-size";
 
 
 
@@ -127,8 +129,14 @@ router.on({
     },
     "admin/categories/:id/update" :({data}) =>{
         print(EditCategoryPage, data.id)
+    },
+
+    "admin/detail-cart/:id" :({data}) =>{
+        print(detailCarts,data.id);
+    },
+    "admin/products/add-size" : ()=>{
+        print(addSize);
     }
-    
     
 });
 router.notFound(() => print("Not Found Page"));
@@ -136,44 +144,3 @@ router.notFound(() => print("Not Found Page"));
 router.resolve()
 
 
-// // Chờ scipt load thư viện thành công thì sẽ hiển thị ra câu lệnh 
-// function loadScript(src, callback) {
-//     const script = document.createElement("script");
-//     script.src = src;
-  
-//     // Chờ load thư viện thành công
-//     script.onload = () => {
-//       callback();
-//     };
-//     document.head.append(script);
-//   }
-//   loadScript(
-//     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function",
-//     () => {
-//       console.log("script loaded");
-//     }
-//   ); // newFunction nó nằm trong đường thư viện index.js
-
-// function resolveAfter2s(){
-//     return new Promise((resolve,reject) => {
-//         setTimeout(()=>{
-//             try {
-//                 resolve(["Thầy", "Đạt"])
-//             } catch (error) {
-//                 reject("Lỗi rồi e bu ơi");
-//             }
-//         });
-//     });
-// }
-// const getData = resolveAfter2s();
-// getData.then(result => [...result,"Thầy đạt vê lót"])
-//     .then((data) => console.log(data))
-//     .catch((error) => console.log(error));
-
-// //
-// async function getData2(){
-//     const result = await resolveAfter2s();
-//     const data = await [...result,'Nhung'];
-//     console.log(data);
-// }
-// getData2();

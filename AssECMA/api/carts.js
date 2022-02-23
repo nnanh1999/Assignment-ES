@@ -20,11 +20,7 @@ export const remove = (id) =>{
     const url = `/carts/${id}`;
     return instance.delete(url);
 }
-export const update = (cart) => {
-    const url = `/carts/${cart.id}`;
-    return instance.put(url,cart);
-}
-export const filterKeyword = (keyword) => {
-    const url = `/carts?q=${keyword}`;
+export const filterSortDesc = () => {
+    const url = `/carts?_sort=id,views&_order=asc,desc`;
     return instance.get(url);
 }

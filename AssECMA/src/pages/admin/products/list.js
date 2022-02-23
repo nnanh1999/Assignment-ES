@@ -5,10 +5,18 @@ import { filterKeyword, getAll, remove } from '../../../../api/products';
 import reRender from '../../../../ultis/reRender';
 import headerAdmin from '../../../components/headerAdmin';
 
+// eslint-disable-next-line prefer-const
+let perPage = 6;
+let currentPage = 1;
+let start = 0;
+let end = perPage;
+
+const { data } = await getAll();
+const numPage = Math.ceil(data.length / perPage);
 
 const productsPage = {
   async render() {
-    const { data } = await getAll();
+    
     return /* html */ `
             ${await headerAdmin.render()}
             <header class="bg-white shadow">
@@ -47,9 +55,9 @@ const productsPage = {
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" colspan = "2">Chức năng</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="bg-white divide-y divide-gray-200">
+                                        <tbody class="products bg-white divide-y divide-gray-200">
                                             ${data.map(
-                                            (product) =>
+                                            (product , index) => (index >= start && index< end) ?
                                                 `
                                                     <tr>
                                                         
@@ -71,14 +79,20 @@ const productsPage = {
                                                             <button data-id="${product.id}" class="btn btn-delete fill-current text-red-500 material-icons">Xóa</button></a>
                                                         </td>
                                                     </tr>  
-                                                `
+                                                ` :''
                                             ).join('')}
                                                 
                                             </tbody>
                                     </table>
                                 </div>
                                 <div class="text-right mr-5">
-                                        <a href="#">1 . 2 . 3 . 4 . 5 >></a>
+                                    <p class="cursor-pointer" id="btn-prev"><a><<<a></p>
+                                    <div id="page-number">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <p class="cursor-pointer" id="btn-next"><a>>><a></p>
                                 </div>
                             </div>
                         </div>  
@@ -91,18 +105,13 @@ const productsPage = {
   },
   afterRender(){
 
-    const btnSearch = document.querySelector("#search-toggle");
-    btnSearch.onkeydown =  (event) => {
-      if(event.keyCode === 13){
-        const keyword = event.target.value;
-        const dataPromise =  filterKeyword(keyword);
-        event.preventDefault();
-    //    console.log(dataPromise);
-        dataPromise.then( ({data})  =>{
-            let showProducts = ``;       
-            data.forEach(  product => {   
-                showProducts += /* html */`
-                    <tr>                                             
+    function renderProduct(){
+        document.querySelector(".products").innerHTML = `
+        ${data.map(
+            (product , index) => (index >= start && index< end) ?
+                `
+                    <tr>
+                        
                         <td class="px-6 py-4 text-sm text-gray-500">${product.id}</td>
                         <td class="px-6 py-4 text-sm text-gray-500">${product.name}</td>
                         <td class="px-6 py-4 text-sm text-gray-500">
@@ -115,18 +124,111 @@ const productsPage = {
                         <td class="px-6 py-4 text-sm text-gray-500">${product.createdAt}</td>
                         <td class="px-6 py-4 text-sm text-gray-500">${product.categoryId}</td>
 
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            <span class="text-sm bg-green-500 text-white rounded-full px-2 py-1">Active</span>
-                        </td>
+               
                         <td class="text-center py-4">
                             <a href="/#/admin/products/${product.id}/edit"><span class="fill-current text-green-500 material-icons">Edit</span></a>
-                            <a href="#"><span class="fill-current text-red-500 material-icons">Delete</span></a>
+                            <button data-id="${product.id}" class="btn btn-delete fill-current text-red-500 material-icons">Xóa</button></a>
                         </td>
                     </tr>  
-              `
-                 
-            });
-            document.querySelector('tbody').innerHTML = showProducts;
+                ` :''
+            ).join('')}
+    `
+    }
+    function getCurrentPage(currentPage){
+        start = (currentPage - 1) * perPage;
+        end  = currentPage  * perPage;
+    }
+    function prevPage(){
+        document.querySelector("#btn-prev").addEventListener('click',()=>{
+            currentPage--;
+            if(currentPage <= 1){
+                currentPage = 1;
+            }
+            getCurrentPage(currentPage);
+            renderProduct();
+        })
+    }
+    function nextPage(){
+        document.querySelector("#btn-next").addEventListener('click',()=>{
+            currentPage++;
+            if(currentPage > perPage){
+              currentPage = perPage;
+            }
+            getCurrentPage(currentPage);
+            renderProduct();
+        })
+    }
+
+    function renderListPage(){
+        let content = '';
+        content += `<span class="cursor-pointer">${1}</span>-`;
+        for (let index = 2; index <= numPage; index++) {
+          content += `<span class="cursor-pointer">${index}</span>-`;
+        }
+  
+        document.querySelector("#page-number").innerHTML = content;
+      }
+      renderListPage();
+
+      function changePage () {
+        const currentPages =document.querySelectorAll("#page-number span")
+  
+        for (let index = 0; index < currentPages.length; index++) {
+            // eslint-disable-next-line no-loop-func
+            currentPages[index].addEventListener(('click'),()=>{
+              const value = index + 1;
+              currentPage = value; 
+              getCurrentPage(currentPage);
+              renderProduct()
+            })
+          
+        }
+      }
+      changePage();
+
+
+
+
+    nextPage();
+    prevPage();
+    
+
+
+    const btnSearch = document.querySelector("#search-toggle");
+    btnSearch.onkeydown =  (event) => {
+      if(event.keyCode === 13){
+        const keyword = event.target.value;
+        const dataPromise =  filterKeyword(keyword);
+        event.preventDefault();
+    //    console.log(dataPromise);
+        dataPromise.then( ({data})  =>{
+            document.querySelector(".products").innerHTML = `
+        ${data.map(
+            (product , index) => (index >= start && index< end) ?
+                `
+                    <tr>
+                        
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.id}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.name}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">
+                            <img class="h-6 w-6 rounded-full"
+                                src="${product.image}">
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.price}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.desc}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.quantity}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.createdAt}</td>
+                        <td class="px-6 py-4 text-sm text-gray-500">${product.categoryId}</td>
+
+               
+                        <td class="text-center py-4">
+                            <a href="/#/admin/products/${product.id}/edit"><span class="fill-current text-green-500 material-icons">Edit</span></a>
+                            <button data-id="${product.id}" class="btn btn-delete fill-current text-red-500 material-icons">Xóa</button></a>
+                        </td>
+                    </tr>  
+                ` :''
+            ).join('')}
+    `
         });
       };
     };
