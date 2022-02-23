@@ -32,4 +32,13 @@ export const filterKeyword = (keyword) => {
     const url = `/products?q=${keyword}`;
     return instance.get(url);
 }
-// http://localhost:3001/products?q=
+export const filterSortAsc = () => {
+    const url = `/products?_sort=price,views&_order=desc,asc`;
+    return instance.get(url);
+}
+export const filterSortDesc = () => {
+    const url = `/products?_sort=price,views&_order=asc,desc`;
+    return instance.get(url);
+}
+// http://localhost:3001/products?q= 
+// http://localhost:3001/products/?_sort=price,views&_order=desc,asc

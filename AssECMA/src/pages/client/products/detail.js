@@ -1,3 +1,4 @@
+import {  getAll } from "../../../../api/carts";
 import { get } from "../../../../api/products";
 import { addToCart } from "../../../../ultis/cart";
 import reRender from "../../../../ultis/reRender";
@@ -17,25 +18,29 @@ const productDetailPage = {
             </div> 
             <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                 <div class="border-b border-gray-200 pb-6">
-                    <p class="text-sm leading-none text-gray-600 dark:text-gray-300 ">chứa tên loại</p>
                     <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">${data.name}</h1>
                 </div>
                 <div class="py-4 border-b border-gray-200 flex items-center justify-between">
-                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Colours</p>
+                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Option</p>
                     <div class="flex items-center justify-center">
-                        <p class="text-sm leading-none text-gray-600 dark:text-gray-300">Smoke Blue with red accents</p>
-                        <div class="w-6 h-6 bg-gradient-to-b from-gray-900 to-indigo-500 ml-3 mr-4 cursor-pointer"></div>
-                        <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2.svg" alt="next">
-                        <img class="hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2dark.svg" alt="next">   
+                    <select id="color" class=" right-24 top-4 h-12 mt-1 text-sm text-pink-700 w-200 rounded-lg cursor-pointer outline-none ">
+                        <option class=" hidden">Màu</option>
+                        <option value="yellow" class="w-5 bg-yellow-400"></option>
+                        <option value="red" class="w-5 bg-red-400"></option>
+                    </select>
+
+                       
                     </div>
                 </div>
                 <div class="py-4 border-b border-gray-200 flex items-center justify-between">
-                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Size</p>
-                    <div class="flex items-center justify-center">
-                        <p class="text-sm leading-none text-gray-600 dark:text-gray-300 mr-3">38.2</p>
+                    <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Option</p>
+                    <div class="flex items-center justify-center" >
+                    <select id="size" class=" right-24 top-4 h-12 mt-1 text-sm text-pink-700 w-200 rounded-lg cursor-pointer outline-none ">
+                        <option class=" hidden">Kích cỡ</option>
+                        <option value="asc">X</option>
+                        <option value="desc">XL</option>
+                    </select>
                         
-                        <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2.svg" alt="next">
-                        <img class="hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg2dark.svg" alt="next">  
                     </div>
                 </div>
                 <div>
@@ -60,13 +65,13 @@ const productDetailPage = {
                 <div>
                     <div class="border-t border-b py-4 mt-7 border-gray-200">
                         <div data-menu class="flex justify-between items-center cursor-pointer">
-                            <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Shipping and returns</p>
+                            <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Giao hàng & Đổi trả</p>
                             <button class="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 rounded" role="button" aria-label="show or hide">
                                 <img class="transform dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4.svg" alt="dropdown">
                                 <img class="transform hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4dark.svg" alt="dropdown">
                             </button>
                         </div>
-                        <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300" id="sect">You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are nonrefundable</div>
+                        <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300" id="sect">Abc gì gì đó</div>
                     </div>
                 </div>
                 <div>
@@ -78,7 +83,7 @@ const productDetailPage = {
                                 <img class="transform hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail3-svg4dark.svg" alt="dropdown">
                             </button>
                         </div>
-                        <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300" id="sect">If you have any questions on how to return your item to us, contact us.</div>
+                        <div class="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300" id="sect">Mail <br> SDT</div>
                     </div>
                 </div>
             </div>
@@ -90,6 +95,15 @@ const productDetailPage = {
         `
     },
     afterRender(id){
+
+   
+        function changeSize(){
+            console.log('a');
+            
+        }
+ 
+
+
         Header.afterRender();
 
         const elements = document.querySelectorAll("[data-menu]");
@@ -105,11 +119,13 @@ const productDetailPage = {
             });
         }
         
+        
+       
   
         const btnAddCart = document.querySelector('.btn-add-cart');
         btnAddCart.addEventListener('click' ,async ()=>{
             const {data} = await get(id);
-            addToCart({...data, quantity : +document.querySelector("#qty").value},()=>
+            addToCart({...data, quantity : +document.querySelector("#qty").value },()=>
             {reRender(productDetailPage,"#header")})
             location.reload();
            

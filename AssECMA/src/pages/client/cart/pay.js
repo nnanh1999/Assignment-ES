@@ -1,4 +1,4 @@
-import { add } from "../../../../api/carts";
+import { add, filterSortDesc } from "../../../../api/carts";
 import Header from "../../../components/header";
 import toastr from 'toastr';
 import "toastr/build/toastr.min.css"
@@ -6,6 +6,8 @@ import "toastr/build/toastr.min.css"
 import $ from 'jquery';
 // eslint-disable-next-line import/order
 import validate  from 'jquery-validation';
+import axios from "axios";
+import { addCartDetail } from "../../../../api/cartDetails";
 // eslint-disable-next-line no-unused-vars
 let priceCarts = 0;
 // eslint-disable-next-line prefer-const
@@ -105,6 +107,20 @@ const cartPayments = {
     }
     },
     afterRender(){
+
+        const detailCartsLocal = localStorage.getItem("cart");
+        // console.log(detailCart);
+        const detailCarts = JSON.parse(detailCartsLocal)
+       
+        // axios.get("http://localhost:3001/carts-detail/2")
+        // .then(({data})=>{
+        //    const sp = JSON.parse(data.detailCarts)
+        //    sp.forEach(element => {
+        //         console.log( element);
+        //     });
+        // })
+        
+
         Header.afterRender()
         const donePaying = $("#done-paying");
   
@@ -150,7 +166,20 @@ const cartPayments = {
                     const time = `${today.getHours()  }:${  today.getMinutes()  }:${  today.getSeconds()}`;
                     const dateTime = `${date} ${time}`;
                     // note : noteValue,
-        
+
+                    let tong = 0;
+                    let idcart = 0;
+                    const carts = filterSortDesc()
+                    
+                    .then(({data})=>{
+                        for (let i = 0; i < data.length; i++) {
+                            tong ++;
+                        }
+                        const idcartAfter = data[tong-1];
+                   
+                        idcart = idcartAfter.id;
+                        idcart +=1;
+                    
                     add({
                         email : emailValue,
                         phone : phoneValue,
@@ -159,13 +188,16 @@ const cartPayments = {
                         pttt : ptttValue,
                         createAt : dateTime,
                         totalPrice : priceCarts,    
+                        id : idcart
                     })
-                    
+                    addCartDetail({detailCart : detailCarts,cartId : idcart})
+                })
                 }
                 toastr.success("Đặt hàng thành công;")
                 localStorage.removeItem("cart");
                 donePaying();
             }
+            
         })
 
         // donePaying.addEventListener('submit', ()=>{
